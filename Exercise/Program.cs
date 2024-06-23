@@ -70,7 +70,9 @@ namespace exercise
             enemy1.charLvl = 1;
 
             hero1.heroSpeech();
+            Console.WriteLine(hero1.charName + "Stats: " + hero1.charHP + " " + hero1.charSpeed + " " + hero1.charLvl);
             enemy1.enemySpeech();
+            Console.WriteLine(enemy1.charName + "Stats: " + enemy1.charHP + " " + enemy1.charSpeed + " " + enemy1.charLvl);
 
             hero1.speech();
             Console.WriteLine(enemy1.charName + ". " + hero1.charName + " said.");
