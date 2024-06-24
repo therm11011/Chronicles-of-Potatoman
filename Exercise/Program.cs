@@ -8,7 +8,6 @@ namespace exercise
         private int hp;
         private int speed;
         private int lvl;
-        private int exp;
 
         public string charName
         {
@@ -31,11 +30,7 @@ namespace exercise
             set { lvl = value; }
         }
 
-        public int charExp
-        {
-            get { return exp; }
-            set { exp = value; }
-        }
+        
 
         public void speech()
         {
@@ -44,8 +39,8 @@ namespace exercise
 
         public void attackPlayer(character target)
         {
-            Console.WriteLine("You Attacked " + target.charName + "! " + "Enemy HP: " + target.charHP);
             target.charHP -= 1;
+            Console.WriteLine("You Attacked " + target.charName + "! " + "Enemy HP: " + target.charHP);
 
             if (target.charHP == 0)
             {
@@ -58,10 +53,18 @@ namespace exercise
 
     class hero : character 
     {
+        private int exp;
         public void heroSpeech() 
         {
             Console.WriteLine("Ako si PotatoMan");
         }
+
+        public int charExp
+        {
+            get { return exp; }
+            set { exp = value; }
+        }
+
         public void levelCheck()
         {
             if (charExp == 10)
