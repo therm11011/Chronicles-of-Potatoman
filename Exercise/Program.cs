@@ -33,6 +33,17 @@ namespace exercise
         {
             Console.Write("TANGINA KA ");
         }
+
+        public void attackPlayer(character target)
+        {
+            Console.WriteLine("You Attacked " + target.charName + "! " + "Enemy HP: " + target.charHP);
+            target.charHP -= 1;
+
+            if (target.charHP == 0)
+            {
+                Console.WriteLine("You slain " + target.charName);
+            }
+        }
     }
 
     class hero : character 
@@ -40,18 +51,6 @@ namespace exercise
         public void heroSpeech() 
         {
             Console.WriteLine("Ako si PotatoMan");
-        }
-
-        public void attackPlayer(character target)
-        {
-            Console.WriteLine("You Attacked " + target.charName);
-            target.charHP -= 1;
-
-            if (target.charHP == 0)
-            {
-                Console.WriteLine("You slain " + target.charName);
-                
-            }
         }
     }
 
@@ -83,9 +82,9 @@ namespace exercise
             enemy1.charLvl = 1;
 
             hero1.heroSpeech();
-            Console.WriteLine(hero1.charName + "Stats: " + hero1.charHP + " " + hero1.charSpeed + " " + hero1.charLvl);
+            Console.WriteLine(hero1.charName + " Stats: " + hero1.charHP + " " + hero1.charSpeed + " " + hero1.charLvl);
             enemy1.enemySpeech();
-            Console.WriteLine(enemy1.charName + "Stats: " + enemy1.charHP + " " + enemy1.charSpeed + " " + enemy1.charLvl);
+            Console.WriteLine(enemy1.charName + " Stats: " + enemy1.charHP + " " + enemy1.charSpeed + " " + enemy1.charLvl);
 
             hero1.speech();
             Console.WriteLine(enemy1.charName + ". " + hero1.charName + " said.");
@@ -94,10 +93,24 @@ namespace exercise
 
             while (true)
             {
-                hero1.attackPlayer(enemy1);
-                Console.WriteLine(enemy1.charName + " HP: " + enemy1.charHP);
-                if (enemy1.charHP == 0) 
-                { 
+                if (enemy1.charHP != 0)
+                {
+                    hero1.attackPlayer(enemy1);
+                    if (hero1.charHP != 0 && enemy1.charHP != 0)
+                    {
+                        enemy1.attackPlayer(hero1);
+                    }
+                } 
+                else
+                {
+                    if (enemy1.charHP == 0)
+                    {
+                        Console.WriteLine(hero1.charName.ToUpper() + " WINS!");
+                    }
+                    else 
+                    {
+                        Console.WriteLine(enemy1.charName.ToUpper() + " WINS!");
+                    }
                     break;
                 }
             }
