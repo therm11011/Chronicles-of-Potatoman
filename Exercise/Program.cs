@@ -41,16 +41,29 @@ namespace exercise
         {
             Console.WriteLine("Ako si PotatoMan");
         }
-    }
-    
 
-    class enemy : character 
+        public void attackPlayer(character target)
+        {
+            Console.WriteLine("You Attacked " + target.charName);
+            target.charHP -= 1;
+
+            if (target.charHP == 0)
+            {
+                Console.WriteLine("You slain " + target.charName);
+                
+            }
+        }
+    }
+
+    class enemy : character
     {
         public void enemySpeech() 
         {
             Console.WriteLine("Ako si Pena");
         }
     }
+
+    
 
     class Program
     {
@@ -79,6 +92,15 @@ namespace exercise
             enemy1.speech();
             Console.WriteLine(hero1.charName + ". " + enemy1.charName + " said.");
 
+            while (true)
+            {
+                hero1.attackPlayer(enemy1);
+                Console.WriteLine(enemy1.charName + " HP: " + enemy1.charHP);
+                if (enemy1.charHP == 0) 
+                { 
+                    break;
+                }
+            }
         }
     }
 }
