@@ -86,14 +86,39 @@ namespace exercise
         }
     }
 
-    
+    class story
+    {
+        private string script;
+
+        public string charScript 
+        {
+            get { return script; }
+            set { script = value; }
+        }
+        public void displayScript(string targetScript)
+        {
+            if (targetScript.Contains('.'))
+            {
+                targetScript += '\n';
+            }
+            foreach (char c in targetScript) 
+            {
+                Console.Write(c);
+                Thread.Sleep(50);
+            }
+        }
+    }
 
     class Program
     {
         static void Main(string[] args)
         {
+            story firstPage = new story();
             hero hero1 = new hero();
             enemy enemy1 = new enemy();
+
+            firstPage.charScript = "Once upon a time, there is a hero named PotatoMan.";
+            firstPage.displayScript(firstPage.charScript);
 
             hero1.charName = "POTATOMAN";
             hero1.charHP = 10;
@@ -160,7 +185,7 @@ namespace exercise
                         enemy1.attackPlayer(hero1);
                         if (enemy1.charHP > 0 && hero1.charHP > 0)
                         {
-                            enemy1.attackPlayer(hero1);
+                            hero1.attackPlayer(enemy1);
                             
                         }
                         Thread.Sleep(3000);
