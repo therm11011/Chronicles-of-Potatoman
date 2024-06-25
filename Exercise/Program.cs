@@ -108,13 +108,19 @@ namespace exercise
 
             hero1.heroSpeech();
             Console.WriteLine(hero1.charName + " Stats: " + hero1.charHP + " " + hero1.charSpeed + " " + hero1.charLvl);
+            Thread.Sleep(3000);
             enemy1.enemySpeech();
             Console.WriteLine(enemy1.charName + " Stats: " + enemy1.charHP + " " + enemy1.charSpeed + " " + enemy1.charLvl);
+            Thread.Sleep(3000);
 
             hero1.speech();
             Console.WriteLine(enemy1.charName + ". " + hero1.charName + " said.");
+            Thread.Sleep(3000);
+
             enemy1.speech();
             Console.WriteLine(hero1.charName + ". " + enemy1.charName + " said.");
+            Thread.Sleep(3000);
+
 
             Random turn = new Random();
             int firstTurn = turn.Next(10);
@@ -123,10 +129,12 @@ namespace exercise
             if (firstTurn % 2 == 0)
             {
                 Console.WriteLine(hero1.charName + " Turns First!");
+                Thread.Sleep(3000);
             }
             else
             {
                 Console.WriteLine(enemy1.charName + " Turns First!");
+                Thread.Sleep(3000);
             }
 
             while (true)
@@ -139,7 +147,9 @@ namespace exercise
                         if (hero1.charHP > 0 && enemy1.charHP > 0)
                         {
                             enemy1.attackPlayer(hero1);
+                            
                         }
+                        Thread.Sleep(3000);
                     }
 
                 }
@@ -151,7 +161,9 @@ namespace exercise
                         if (enemy1.charHP > 0 && hero1.charHP > 0)
                         {
                             enemy1.attackPlayer(hero1);
+                            
                         }
+                        Thread.Sleep(3000);
                     }
                 }
 
