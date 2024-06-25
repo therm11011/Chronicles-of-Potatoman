@@ -39,10 +39,12 @@ namespace exercise
 
         public void attackPlayer(character target)
         {
-            target.charHP -= 1;
-            Console.WriteLine("You Attacked " + target.charName + "! " + "Enemy HP: " + target.charHP);
+            Random expectedDamage = new Random();
+            int actualDamage = expectedDamage.Next(10);
+            target.charHP -= actualDamage;
+            Console.WriteLine("You Attacked " + target.charName + "! With a damage of " + actualDamage + "! Enemy HP: " + target.charHP);
 
-            if (target.charHP == 0)
+            if (target.charHP <= 0)
             {
                 Console.WriteLine("You slain " + target.charName);
             }
@@ -116,22 +118,22 @@ namespace exercise
 
             while (true)
             {
-                if (enemy1.charHP != 0)
+                if (enemy1.charHP > 0 && hero1.charHP > 0)
                 {
                     hero1.attackPlayer(enemy1);
-                    if (hero1.charHP != 0 && enemy1.charHP != 0)
+                    if (hero1.charHP > 0 && enemy1.charHP > 0)
                     {
                         enemy1.attackPlayer(hero1);
                     }
                 } 
                 else
                 {
-                    if (enemy1.charHP == 0)
+                    if (enemy1.charHP <= 0)
                     {
                         hero1.charExp += 1;
                         Console.WriteLine(hero1.charName.ToUpper() + " WINS!");
                     }
-                    else 
+                    else if(hero1.charHP  <= 0)
                     {
                         Console.WriteLine(enemy1.charName.ToUpper() + " WINS!");
                     }
