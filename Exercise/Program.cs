@@ -116,29 +116,58 @@ namespace exercise
             enemy1.speech();
             Console.WriteLine(hero1.charName + ". " + enemy1.charName + " said.");
 
+            Random turn = new Random();
+            int firstTurn = turn.Next(10);
+            Console.WriteLine(firstTurn);
+
+            if (firstTurn % 2 == 0)
+            {
+                Console.WriteLine(hero1.charName + " Turns First!");
+            }
+            else
+            {
+                Console.WriteLine(enemy1.charName + " Turns First!");
+            }
+
             while (true)
             {
-                if (enemy1.charHP > 0 && hero1.charHP > 0)
+                if (firstTurn % 2 == 0)
                 {
-                    hero1.attackPlayer(enemy1);
+                    if (enemy1.charHP > 0 && hero1.charHP > 0) 
+                    {
+                        hero1.attackPlayer(enemy1);
+                        if (hero1.charHP > 0 && enemy1.charHP > 0)
+                        {
+                            enemy1.attackPlayer(hero1);
+                        }
+                    }
+
+                }
+                else
+                {
                     if (hero1.charHP > 0 && enemy1.charHP > 0)
                     {
                         enemy1.attackPlayer(hero1);
+                        if (enemy1.charHP > 0 && hero1.charHP > 0)
+                        {
+                            enemy1.attackPlayer(hero1);
+                        }
                     }
-                } 
-                else
+                }
+
+
+                if (enemy1.charHP <= 0)
                 {
-                    if (enemy1.charHP <= 0)
-                    {
-                        hero1.charExp += 1;
-                        Console.WriteLine(hero1.charName.ToUpper() + " WINS!");
-                    }
-                    else if(hero1.charHP  <= 0)
-                    {
-                        Console.WriteLine(enemy1.charName.ToUpper() + " WINS!");
-                    }
+                    hero1.charExp += 1;
+                    Console.WriteLine(hero1.charName.ToUpper() + " WINS!");
                     break;
                 }
+                else if(hero1.charHP  <= 0)
+                {
+                    Console.WriteLine(enemy1.charName.ToUpper() + " WINS!");
+                    break;
+                }
+                
             }
             hero1.levelCheck();
         }
