@@ -37,12 +37,12 @@ namespace exercise
             Console.Write("TANGINA KA ");
         }
 
-        public void attackPlayer(character target)
+        public void attackPlayer(character character , character target)
         {
             Random expectedDamage = new Random();
             int actualDamage = expectedDamage.Next(10);
             target.charHP -= actualDamage;
-            Console.WriteLine("You Attacked " + target.charName + "! With a damage of " + actualDamage + "! Enemy HP: " + target.charHP);
+            Console.WriteLine(character.charName + " Attacked " + target.charName + "! With a damage of " + actualDamage + "! Current HP: " + target.charHP);
 
             if (target.charHP <= 0)
             {
@@ -168,10 +168,10 @@ namespace exercise
                 {
                     if (enemy1.charHP > 0 && hero1.charHP > 0) 
                     {
-                        hero1.attackPlayer(enemy1);
+                        hero1.attackPlayer(hero1, enemy1);
                         if (hero1.charHP > 0 && enemy1.charHP > 0)
                         {
-                            enemy1.attackPlayer(hero1);
+                            enemy1.attackPlayer(enemy1, hero1);
                             
                         }
                         Thread.Sleep(3000);
@@ -182,10 +182,10 @@ namespace exercise
                 {
                     if (hero1.charHP > 0 && enemy1.charHP > 0)
                     {
-                        enemy1.attackPlayer(hero1);
+                        enemy1.attackPlayer(enemy1,hero1);
                         if (enemy1.charHP > 0 && hero1.charHP > 0)
                         {
-                            hero1.attackPlayer(enemy1);
+                            hero1.attackPlayer(hero1, enemy1);
                             
                         }
                         Thread.Sleep(3000);
