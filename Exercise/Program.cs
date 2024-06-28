@@ -117,8 +117,13 @@ namespace exercise
             hero hero1 = new hero();
             enemy enemy1 = new enemy();
 
-            firstPage.charScript = "Once upon a time, there is a hero named PotatoMan.";
+            firstPage.charScript = "Once upon a time, there was a hero named PotatoMan.";
             firstPage.displayScript(firstPage.charScript);
+            firstPage.charScript = "Potato Man was a man made of Potato, he has a talent of spreading potatoes.";
+            firstPage.displayScript(firstPage.charScript);
+            firstPage.charScript = "He was currently fighting a person who has a skin of spikes named Pena." + "\n";
+            firstPage.displayScript(firstPage.charScript);
+
 
             hero1.charName = "POTATOMAN";
             hero1.charHP = 10;
