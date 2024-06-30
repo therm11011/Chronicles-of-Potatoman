@@ -137,10 +137,10 @@ namespace exercise
             enemy1.charLvl = 1;
 
             hero1.heroSpeech();
-            Console.WriteLine(hero1.charName + " Stats: " + hero1.charHP + " " + hero1.charSpeed + " " + hero1.charLvl);
+            Console.WriteLine(hero1.charName + " Stats: hp: " + hero1.charHP + " speed: " + hero1.charSpeed + " level: " + hero1.charLvl);
             Thread.Sleep(3000);
             enemy1.enemySpeech();
-            Console.WriteLine(enemy1.charName + " Stats: " + enemy1.charHP + " " + enemy1.charSpeed + " " + enemy1.charLvl);
+            Console.WriteLine(enemy1.charName + " Stats: hp: " + enemy1.charHP + " speed: " + enemy1.charSpeed + " level: " + enemy1.charLvl);
             Thread.Sleep(3000);
 
             hero1.speech();
@@ -207,6 +207,7 @@ namespace exercise
                 else if(hero1.charHP  <= 0)
                 {
                     Console.WriteLine(enemy1.charName.ToUpper() + " WINS!");
+                    Console.WriteLine("YOU LOSE");
                     break;
                 }
                 
