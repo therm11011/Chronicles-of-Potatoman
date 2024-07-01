@@ -58,7 +58,16 @@ namespace exercise
         private int exp;
         public void heroSpeech() 
         {
-            Console.WriteLine("Ako si PotatoMan");
+            string targetScript = "Ako si Potato Man.";
+            if (targetScript.Contains('.'))
+            {
+                targetScript += '\n';
+            }
+            foreach (char c in targetScript)
+            {
+                Console.Write(c);
+                Thread.Sleep(50);
+            }
         }
 
         public int charExp
@@ -82,7 +91,16 @@ namespace exercise
     {
         public void enemySpeech() 
         {
-            Console.WriteLine("Ako si Pena");
+            string targetScript = "Ako si Pena.";
+            if (targetScript.Contains('.'))
+            {
+                targetScript += '\n';
+            }
+            foreach (char c in targetScript)
+            {
+                Console.Write(c);
+                Thread.Sleep(50);
+            }
         }
     }
 
