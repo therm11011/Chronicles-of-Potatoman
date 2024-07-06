@@ -34,7 +34,16 @@ namespace exercise
 
         public void speech()
         {
-            Console.Write("TANGINA KA ");
+            string targetScript = "Ako si " + name + ".";
+            if (targetScript.Contains('.'))
+            {
+                targetScript += '\n';
+            }
+            foreach (char c in targetScript)
+            {
+                Console.Write(c);
+                Thread.Sleep(50);
+            }
         }
 
         public void attackPlayer(character character , character target)
@@ -154,21 +163,12 @@ namespace exercise
             enemy1.charSpeed = 2;
             enemy1.charLvl = 1;
 
-            hero1.heroSpeech();
+            hero1.speech();
             Console.WriteLine(hero1.charName + " Stats: hp: " + hero1.charHP + " speed: " + hero1.charSpeed + " level: " + hero1.charLvl);
             Thread.Sleep(3000);
-            enemy1.enemySpeech();
+            enemy1.speech();
             Console.WriteLine(enemy1.charName + " Stats: hp: " + enemy1.charHP + " speed: " + enemy1.charSpeed + " level: " + enemy1.charLvl);
             Thread.Sleep(3000);
-
-            hero1.speech();
-            Console.WriteLine(enemy1.charName + ". " + hero1.charName + " said.");
-            Thread.Sleep(3000);
-
-            enemy1.speech();
-            Console.WriteLine(hero1.charName + ". " + enemy1.charName + " said.");
-            Thread.Sleep(3000);
-
 
             Random turn = new Random();
             int firstTurn = turn.Next(10);
